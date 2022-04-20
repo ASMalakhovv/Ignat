@@ -1,0 +1,25 @@
+.navigation {
+    left: -340px;
+    width: 480px;
+    padding: 5px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navigation:hover {
+    left: 0;
+    transition: left 1s 0.2s;
+}
+
+.navLink-navigation {
+    color: rgba(0, 0, 0, 0.85);
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 2px;
+}
+
+.active {
+    color: #f67979;
+}
+

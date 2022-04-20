@@ -1,0 +1,21 @@
+.message {
+    display: flex;
+}
+
+img {
+    width: 50px;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    border: black solid 1px;
+    width: 200px;
+}
+
+.time {
+    position: relative;
+    bottom: 15px;
+    left: 150px;
+
+}

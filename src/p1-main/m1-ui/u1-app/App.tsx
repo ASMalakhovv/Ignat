@@ -6,6 +6,7 @@ import HW3 from "../../../p2-homeworks/h3/HW3";
 import HW5 from '../../../p2-homeworks/h5-rrd-v6/HW5';
 import HW4 from '../../../p2-homeworks/h4/HW4';
 import HW6 from "../../../p2-homeworks/h6/HW6";
+import HW7 from "../../../p2-homeworks/h7/HW7";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
             {/*<HW5/>*/}
             <HW5/>
             <HW6/>
+            <HW7/>
         </div>
     )
 }

@@ -1,4 +1,7 @@
 import React, {SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent} from 'react'
+import style from './SuperSelect.module.scss'
+import selectIcon from './select_icon.svg'
+
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
@@ -14,7 +17,17 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
         ...restProps
     }
 ) => {
-    const mappedOptions: JSX.Element[] | undefined = options?.map((o, i) => <option key={i}>{o}</option>);
+
+    const styleSelector = {
+        backgroundImage: `url(${selectIcon})`,
+        backgroundPosition: 'right',
+        backgroundRepeat: 'no-repeat',
+    }
+
+    const mappedOptions: JSX.Element[] | undefined = options?.map((o, i) => {
+
+        return <option key={i}>{o}</option>
+    });
 
     const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
         onChangeOption && onChangeOption(e.currentTarget.value)
@@ -23,7 +36,8 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
     }
 
     return (
-        <select onChange={onChangeCallback} {...restProps}>
+        <select onChange={onChangeCallback} {...restProps}
+                className={style.selector} style={styleSelector}>
             {mappedOptions}
         </select>
     )

@@ -1,6 +1,7 @@
 import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState} from 'react'
 import SuperInputText from '../../../h4/common/c1-SuperInputText/SuperInputText'
 import style from './SuperEditableSpan.module.scss'
+import iconPen from './pen_icon.svg'
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -28,6 +29,15 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
+
+    const styleIconPen = {
+        backgroundImage: `url(${iconPen})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        width: '20px',
+        height: '20px'
+    }
+
     const [editMode, setEditMode] = useState<boolean>(false)
     const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}
 
@@ -57,7 +67,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                     autoFocus // пропсу с булевым значением не обязательно указывать true
                     onBlur={onBlurCallback}
                     onEnter={onEnterCallback}
-
+                    className={style.superInput}
                     {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                 />
                 :
@@ -68,7 +78,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                     {...restSpanProps}
                 >
                         {/*если нет захардкодженного текста для спана, то значение инпута*/}
-                    {children || restProps.value}
+                    <div style={styleIconPen}></div><p>{children || restProps.value}</p>
                 </span>
 
             }

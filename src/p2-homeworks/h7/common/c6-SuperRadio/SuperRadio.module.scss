@@ -15,7 +15,20 @@
 
     input {
       margin: 5px 0;
+      appearance: none;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #446bc9;
+      outline: none;
+      height: 9px;
+      width: 9px;
+
+      &:checked {
+        background: #446bc9;
+      }
     }
+
+
 
     .inputValue {
       font-weight: 600;

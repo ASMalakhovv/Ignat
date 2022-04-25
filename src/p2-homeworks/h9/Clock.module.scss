@@ -1,0 +1,45 @@
+.clockBlock {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  font-family: 'Share Tech Mono', monospace;
+  background: #0f3854;
+  background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
+  background-size: 100%;
+  align-items: center;
+  width: 400px;
+
+  .clock {
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    letter-spacing: 0.05em;
+    font-size: 80px;
+    height: 80px;
+  }
+
+  .data {
+    position: absolute;
+    top: 64px;
+    letter-spacing: 0.1em;
+    font-size: 24px;
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    margin: 20px 0;
+    height: 20px;
+  }
+
+  .button {
+    .superButton {
+      background: black;
+      color: #daf6ff;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      width: 80px;
+      margin: 35px 5px 10px;
+      border: 1px solid grey;
+      padding: 0;
+      text-transform: uppercase;
+    }
+  }
+
+}

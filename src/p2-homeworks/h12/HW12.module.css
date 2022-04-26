@@ -21,3 +21,6 @@
 .some-text {
     color: darkslateblue;
 }
+.superRadio label {
+    width: 60px;
+}

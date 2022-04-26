@@ -1,0 +1,28 @@
+.rangeContainer {
+  display: flex;
+  flex-direction: column;
+
+
+  .superRange {
+    display: flex;
+    justify-content: space-between;
+    width: 135px;
+    margin: 15px 0;
+
+
+    input[type=range] {
+      width: 115px;
+      cursor: pointer;
+    }
+
+  }
+
+  .superDoubleRange {
+    display: flex;
+    justify-content: space-between;
+    width: 170px;
+    margin: 15px 0;
+
+
+  }
+}

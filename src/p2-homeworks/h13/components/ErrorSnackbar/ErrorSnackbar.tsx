@@ -12,18 +12,15 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 
-export function ErrorSnackbar() {
+export const ErrorSnackbar = React.memo(() => {
     const error = useSelector<AppStoreType, string | null>(state => state.request.error)
     const message = useSelector<AppStoreType, string | null>(state => state.request.responseMessage)
+    const dispatch: ThunkDispatchHW = useDispatch();
 
     useEffect(() => {
         dispatch(changeStatus('failed'))
     }, [error, message])
 
-    const dispatch: ThunkDispatchHW = useDispatch();
-
-    const alertType: AlertColor | undefined = error !== null ? 'error' : 'info'
-    const responseInfo: string | null = error !== null ? error : message
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
@@ -37,9 +34,9 @@ export function ErrorSnackbar() {
     return (
         <Snackbar open={error !== null || message !== null} onClose={handleClose}
                   anchorOrigin={{horizontal: 'center', vertical: 'top'}}>
-            <Alert onClose={handleClose} severity={alertType} sx={{width: '100%'}}>
-                Response: {responseInfo}
+            <Alert onClose={handleClose} severity='info' sx={{width: '100%'}}>
+                Response: {error || message}
             </Alert>
         </Snackbar>
     );
-}
+})

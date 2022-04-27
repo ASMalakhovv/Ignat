@@ -25,7 +25,6 @@ export const ErrorSnackbar = React.memo(() => {
         }
         error && dispatch(savedError(null))
         message && dispatch(savedResMessage(null))
-        dispatch(changeStatus('succeeded'))
     };
 
     return (

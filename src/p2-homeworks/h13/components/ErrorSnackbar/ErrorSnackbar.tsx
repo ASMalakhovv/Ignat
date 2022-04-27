@@ -8,7 +8,7 @@ import {changeStatus, savedError, savedResMessage} from "../../bll/testRequest-r
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    return <MuiAlert elevation={6} ref={ref} variant="standard" {...props} />;
 });
 
 
@@ -17,17 +17,14 @@ export const ErrorSnackbar = React.memo(() => {
     const message = useSelector<AppStoreType, string | null>(state => state.request.responseMessage)
     const dispatch: ThunkDispatchHW = useDispatch();
 
-    useEffect(() => {
-        dispatch(changeStatus('failed'))
-    }, [error, message])
 
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
             return;
         }
-        dispatch(savedError(null))
-        dispatch(savedResMessage(null))
+        error && dispatch(savedError(null))
+        message && dispatch(savedResMessage(null))
         dispatch(changeStatus('succeeded'))
     };
 

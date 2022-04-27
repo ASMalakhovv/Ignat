@@ -10,7 +10,8 @@ import style from './Request.module.scss'
 const Request = () => {
     const isChecked = useSelector<AppStoreType, boolean>(state => state.request.isChecked)
     const status = useSelector<AppStoreType, RequestStatusType>(state => state.request.status)
-
+    const error = useSelector<AppStoreType, string | null>(state => state.request.error)
+    const message = useSelector<AppStoreType, string | null>(state => state.request.responseMessage)
     const dispatch: ThunkDispatchHW = useDispatch()
 
     const sendStatesCheckBox = () => {
@@ -20,7 +21,7 @@ const Request = () => {
         dispatch(changeIsChecked(success))
     }
     // если пошел запрос или обрабатываем сообщение об ошибке | положительном ответе
-    const disabled = status !== 'loading' && status !== 'failed'
+    const disabled = status === 'failed'
     return (
         <div>
             {status === 'loading'
@@ -30,7 +31,7 @@ const Request = () => {
                 : <div style={{height: '20px'}}></div>
             }
             <div className={style.controls}>
-                <SuperButton onClick={sendStatesCheckBox} disabled={disabled}
+                <SuperButton onClick={sendStatesCheckBox} disabled={!!error || !!message}
                              className={style.button}>
                     SEND
                 </SuperButton>

@@ -1,4 +1,4 @@
-import {HWThunk, ThunkDispatchHW} from "../../h10/bll/store";
+import {AppStoreType, HWThunk, ThunkDispatchHW} from "../../h10/bll/store";
 import {hw13API, TestRequestResponseType} from "../api/hw13-api";
 import {AxiosError} from "axios";
 
@@ -58,7 +58,7 @@ export const savedResMessage = (message: string | null) => {
 }
 
 //THUNK
-export const postRequest = (success: boolean): HWThunk => async (dispatch: ThunkDispatchHW) => {
+export const postRequest = (success: boolean): HWThunk => async (dispatch: ThunkDispatchHW, getState: () => AppStoreType) => {
     try {
         dispatch(changeStatus('loading'))
         dispatch(changeIsChecked(success))
@@ -70,6 +70,10 @@ export const postRequest = (success: boolean): HWThunk => async (dispatch: Thunk
     } finally {
         dispatch(changeStatus('succeeded'))
     }
+
+}
+
+export const handleClose = () => {
 
 }
 
